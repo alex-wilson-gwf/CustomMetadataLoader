@@ -14,7 +14,9 @@ public class CSVFileUtil {
             return null;
         }
         
-        String contents = csvFileBody.toString();
+        //Remove all non-printable characters in case Excel adds non standard data
+        //String contents = csvFileBody.toString();
+        String contents = csvFileBody.toString().replaceAll('[^\\x00-\\x7F]', '');
         
         List<List<String>> allFields = new List<List<String>>();
 
